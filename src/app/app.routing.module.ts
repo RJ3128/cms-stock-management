@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './modules/auth/login/login.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) },
-  { path: '**', redirectTo: '/login' }
+  { path: 'stock', loadChildren: () => import('./modules/stock-management/stock-management.module').then(m => m.StockManagementModule), canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '/login' },
 ];
 
 @NgModule({
