@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,10 @@ export class LoginComponent implements OnInit {
         this.loginMessage = (response.message) ? response.message : '';
         this.responseClass = "text-success";
         localStorage.setItem('token', response.token);
+<<<<<<< HEAD
+=======
+        this.router.navigate(['stock']);
+>>>>>>> dev
       } else {
         this.loginMessage = (response.message) ? response.message : '';
         this.responseClass = "text-danger";
