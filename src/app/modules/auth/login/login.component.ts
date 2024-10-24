@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       if (response && response.success) {
         this.loginMessage = (response.message) ? response.message : '';
         this.responseClass = "text-success";
-        console.log('TOKEN: ', response.token);
+        localStorage.setItem('token', response.token);
       } else {
         this.loginMessage = (response.message) ? response.message : '';
         this.responseClass = "text-danger";
