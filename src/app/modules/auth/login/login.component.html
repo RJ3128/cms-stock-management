@@ -1,0 +1,33 @@
+<div class="login-container">
+    <div class="login-form-container center-content">
+        <div class="login-form">
+            <form [formGroup]="loginForm" (ngSubmit)="onAuthenticate()" class="needs-validation" novalidate>
+                <div class="input-container">
+                    <label for="username">Username:</label>
+                    <input id="username" formControlName="username" class="form-control" required />
+                    <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+                        class="text-danger reduce-font-size">
+                        Username is required.
+                    </div>
+                </div>
+                <div class="input-container">
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" formControlName="password" class="form-control" required />
+                    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                        class="text-danger reduce-font-size">
+                        Password is required.
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary login-button">Login</button>
+            </form>
+            <div [class]="responseClass">{{loginMessage}}</div>
+        </div>
+    </div>
+
+
+    <div class="logo-container center-content">
+        <div>CMS Demo</div>
+    </div>
+</div>
