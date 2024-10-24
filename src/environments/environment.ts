@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  // apiURL: 'http://178.128.198.86:3000'
+  // apiURL: 'http://178.128.198.86:3000' //!! Used for testing the live IP.
   apiURL: 'http://localhost:3000'
 };
 
