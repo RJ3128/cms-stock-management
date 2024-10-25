@@ -14,3 +14,10 @@ body {
     height: fit-content;
     text-align: center;
 }
+
+.nav-bar-container {
+    height: 100%;
+    width: 20%;
+    background: linear-gradient(90deg, #00006a 0%, #0101b6 100%);
+    color: white;
+}

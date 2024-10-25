@@ -1,0 +1,15 @@
+.heading {
+    font-size: xx-large;
+    padding: 2rem;
+    padding-bottom: 4rem;
+}
+
+.sub-heading {
+    font-size: larger;
+    padding: 1rem;
+}
+
+.nav-button {
+    padding-left: 2rem;
+    font-size: large;
+}
