@@ -1,19 +1,25 @@
-<div class="heading center-content">
-    CMS Demo
-</div>
+<div class="nav-container">
+    <div class="heading center-content">
+        CMS Demo
+    </div>
 
 
-<div class="sub-heading ">
-    Stock Management
-</div>
-<div class="nav-button ">
-    Stock List
-</div>
+    <div class="sub-heading">
+        Stock Management:
+    </div>
+    <div class="nav-button" (click)="navigateStockList()">
+        <i class="fas fa-clipboard nav-icon"></i>Stock List
+    </div>
 
-<div class="sub-heading ">
-    Admin
-</div>
+    <div class="sub-heading">
+        Admin:
+    </div>
 
-<div class="nav-button ">
-    Users
+    <div class="nav-button" (click)="navigateUsers()">
+        <i class="fas fa-user nav-icon"></i> Users
+    </div>
+
+    <div class="sign-out center-content" (click)="navigateLogin()">
+        <i class="fas fa-right-to-bracket nav-icon"></i> Sign-out
+    </div>
 </div>

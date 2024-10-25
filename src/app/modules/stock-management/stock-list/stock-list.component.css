@@ -1,9 +1,1 @@
-.stock-list-container {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(163, 163, 163);
-    display: flex;
-    flex-direction: row;
-}
-
 .stock-list {}

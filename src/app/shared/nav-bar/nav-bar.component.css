@@ -1,3 +1,10 @@
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
 .heading {
     font-size: xx-large;
     padding: 2rem;
@@ -7,9 +14,29 @@
 .sub-heading {
     font-size: larger;
     padding: 1rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
 }
 
 .nav-button {
-    padding-left: 2rem;
+    padding-left: 3rem;
     font-size: large;
+}
+
+.nav-icon {
+    padding-right: 0.7rem;
+}
+
+.nav-button:hover {
+    background-color: #0158b5;
+    cursor: pointer;
+}
+
+.sign-out {
+    color: rgb(255, 0, 0);
+    font-size: large;
+    font-weight: bold;
+    margin-top: auto;
+    cursor: pointer;
+    margin-bottom: 2rem;
 }
