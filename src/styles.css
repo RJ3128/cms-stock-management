@@ -18,7 +18,6 @@ body {
 .page-container {
     width: 100%;
     height: 100%;
-    background-color: rgb(163, 163, 163);
     display: flex;
     flex-direction: row;
 }
@@ -43,8 +42,31 @@ body {
 }
 
 .heading-bar {
-    height: 8%;
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
     width: 100%;
     background: linear-gradient(90deg, rgb(163, 163, 163) 0%, rgb(115, 115, 115) 100%);
     border: #00006a 1px solid;
+}
+
+.heading-button-container {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
+.heading-button {
+    margin-right: 2rem;
+    background-color: #0101b6 !important;
+    color: white !important;
+    border: black 1px solid !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 5px !important;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.heading-button:hover {
+    background-color: #0101db !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
 }
