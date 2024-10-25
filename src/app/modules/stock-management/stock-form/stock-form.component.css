@@ -1,0 +1,9 @@
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+image-cropper {
+    display: block;
+    margin: 20px 0;
+}

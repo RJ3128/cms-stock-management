@@ -11,15 +11,18 @@
 
         <button #file>
             Select Image to Upload
-            <input #myFileInput style="opacity: 0; position:absolute; left:0px; top:0px; width:100%; height:100%;"
-                type="file" (change)="primaryImageChange($event)" />
+            <input type="file" (change)="onFileChange($event)" accept="image/*" />
         </button>
 
         <image-cropper *ngIf="imageChangedEvent" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
             format="jpeg" output="base64" imageQuality="50" (imageCropped)="imageCropped($event)"
             (imageLoaded)="imageLoaded($event)" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
         </image-cropper>
+        <img *ngIf="croppedImage" [src]="croppedImage" />
     </div>
+
+    <button (click)="cropImage()">Crop Image</button>
+    <img *ngIf="croppedImage" [src]="croppedImage" alt="Cropped Image" />
 
 
 
