@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StockListComponent } from './stock-list/stock-list.component';
 import { StockFormComponent } from './stock-form/stock-form.component';
 import { StockManagementRoutingModule } from './stock-management.routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -10,7 +11,8 @@ import { StockManagementRoutingModule } from './stock-management.routing.module'
   declarations: [StockListComponent, StockFormComponent],
   imports: [
     CommonModule,
-    StockManagementRoutingModule
+    StockManagementRoutingModule,
+    SharedModule
   ]
 })
 export class StockManagementModule { }

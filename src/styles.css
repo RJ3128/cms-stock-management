@@ -14,3 +14,18 @@ body {
     height: fit-content;
     text-align: center;
 }
+
+.page-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(163, 163, 163);
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-bar-container {
+    height: 100%;
+    width: 20%;
+    background: linear-gradient(90deg, #00006a 0%, #0101b6 100%);
+    color: white;
+}
