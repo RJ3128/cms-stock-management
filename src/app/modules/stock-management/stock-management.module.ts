@@ -4,7 +4,7 @@ import { StockListComponent } from './stock-list/stock-list.component';
 import { StockFormComponent } from './stock-form/stock-form.component';
 import { StockManagementRoutingModule } from './stock-management.routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 @NgModule({
@@ -12,7 +12,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     StockManagementRoutingModule,
-    SharedModule
+    SharedModule,
+    ImageCropperModule
+  ],
+  entryComponents: [
+    StockFormComponent
   ]
 })
 export class StockManagementModule { }

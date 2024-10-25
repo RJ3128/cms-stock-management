@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { StockFormComponent } from '../stock-form/stock-form.component';
 
 @Component({
   selector: 'app-stock-list',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
+  }
+
+  addStock() {
+    const stockFormRef = this.dialog.open(StockFormComponent, {
+      width: '80%',
+      data: {
+        newEntry: true
+      },
+      disableClose: true,
+    });
   }
 
 }

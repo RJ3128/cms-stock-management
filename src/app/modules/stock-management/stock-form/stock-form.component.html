@@ -1,1 +1,26 @@
-<p>stock-form works!</p>
+<div class="form-container">
+    <!-- Form Heading -->
+    <div class="form-heading center-content">
+        <span></span>
+        <span>{{title}}</span>
+        <button class="form-close-button" (click)="closeDialog()"><i class="fas fa-xmark"></i></button>
+    </div>
+
+    <!-- Form Content -->
+    <div>
+
+        <button #file>
+            Select Image to Upload
+            <input #myFileInput style="opacity: 0; position:absolute; left:0px; top:0px; width:100%; height:100%;"
+                type="file" (change)="primaryImageChange($event)" />
+        </button>
+
+        <image-cropper *ngIf="imageChangedEvent" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+            format="jpeg" output="base64" imageQuality="50" (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded($event)" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+        </image-cropper>
+    </div>
+
+
+
+</div>
