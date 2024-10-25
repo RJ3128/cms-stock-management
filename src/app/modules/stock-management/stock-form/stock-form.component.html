@@ -16,14 +16,29 @@
 
         <image-cropper *ngIf="imageChangedEvent" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
             format="jpeg" output="base64" imageQuality="50" (imageCropped)="imageCropped($event)"
-            (imageLoaded)="imageLoaded($event)" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+            (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
         </image-cropper>
-        <img *ngIf="croppedImage" [src]="croppedImage" />
+
     </div>
 
-    <button (click)="cropImage()">Crop Image</button>
-    <img *ngIf="croppedImage" [src]="croppedImage" alt="Cropped Image" />
+    <button *ngIf="cropping" (click)="cropImage()">Crop Image</button>
 
+
+    <img *ngIf="primaryImage" [src]="primaryImage" />
+    <img src="../../../../assets/images/Image_not_available.png" alt="image" width="250" height="250"
+        *ngIf="!croppedImage">
+
+    <img *ngIf="frontImage" [src]="frontImage" />
+    <img src="../../../../assets/images/Image_not_available.png" alt="image" width="250" height="250"
+        *ngIf="!croppedImage">
+
+    <img *ngIf="sideImage" [src]="sideImage" />
+    <img src="../../../../assets/images/Image_not_available.png" alt="image" width="250" height="250"
+        *ngIf="!croppedImage">
+
+    <img *ngIf="backImage" [src]="backImage" />
+    <img src="../../../../assets/images/Image_not_available.png" alt="image" width="250" height="250"
+        *ngIf="!croppedImage">
 
 
 </div>

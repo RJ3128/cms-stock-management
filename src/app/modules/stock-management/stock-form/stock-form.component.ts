@@ -11,7 +11,11 @@ export class StockFormComponent implements OnInit {
   public title = '';
   public imageChangedEvent: any = '';
   public cropping: boolean = false;
-  public croppedImage: any = '';
+  public primaryImage: any = '';
+  public frontImage: any = '';
+  public sideImage: any = '';
+  public backImage: any = '';
+
 
   constructor(
     private dialogRef: MatDialogRef<StockFormComponent>,
@@ -35,14 +39,12 @@ export class StockFormComponent implements OnInit {
   }
 
   imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event.base64;
+    this.primaryImage = event.base64;
   }
 
-  imageLoaded(event) {
-    // show cropper
-  }
   cropperReady() {
-    // cropper ready
+    console.log('This is where you add the ready button');
+    this.cropping = true;
   }
   loadImageFailed() {
     // show message
@@ -50,13 +52,14 @@ export class StockFormComponent implements OnInit {
 
 
   cropImage() {
-    console.log('CROPPED IMAGE: ', this.croppedImage);
-    if (this.croppedImage) {
-      console.log('Cropped Image:', this.croppedImage);
+    if (this.primaryImage) {
+      console.log('Cropped Image:', this.primaryImage);
       // You can now use the cropped image (e.g., send it to a server, display it, etc.)
     } else {
       console.log('No image has been cropped yet.');
     }
+    this.imageChangedEvent = undefined;
+    this.cropping = false;
   }
 
   closeDialog() {
@@ -64,11 +67,3 @@ export class StockFormComponent implements OnInit {
   }
 
 }
-
-
-// [imageChangedEvent]="imageChangedEvent" 
-// [maintainAspectRatio]="true"    
-// format="jpeg" output="base64" imageQuality="50" 
-// (imageCropped) = "imageCropped($event)"
-//   (imageLoaded) = "imageLoaded($event)"(cropperReady) = "cropperReady()"
-//     (loadImageFailed) = "loadImageFailed()" >;
