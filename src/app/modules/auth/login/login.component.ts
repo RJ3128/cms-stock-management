@@ -33,10 +33,7 @@ export class LoginComponent implements OnInit {
         this.loginMessage = (response.message) ? response.message : '';
         this.responseClass = "text-success";
         localStorage.setItem('token', response.token);
-<<<<<<< HEAD
-=======
         this.router.navigate(['stock']);
->>>>>>> dev
       } else {
         this.loginMessage = (response.message) ? response.message : '';
         this.responseClass = "text-danger";
