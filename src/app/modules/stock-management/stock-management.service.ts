@@ -19,7 +19,7 @@ export class StockManagementService {
     addStock(stockItem: StockItem, images: StockImages) {
         const payload = {
             stockItem: stockItem,
-            images: images
+            stockImages: images
         };
 
         const token = localStorage.getItem('token'); // example, adjust as needed
