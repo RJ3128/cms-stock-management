@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { StockManagementService } from '../stock-management.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-stock-form',
@@ -28,12 +29,14 @@ export class StockFormComponent implements OnInit {
     { label: "Back", value: "back" }
   ];
   public buttonLabel = 'Save';
+  public isLoading: boolean = false;
 
 
   constructor(
     private dialogRef: MatDialogRef<StockFormComponent>,
     private formBuilder: FormBuilder,
     private stockManagementService: StockManagementService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public formData: any
   ) { }
 
@@ -118,6 +121,7 @@ export class StockFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     const stockData = this.stockForm.getRawValue();
     const images = {
       primaryImage: this.primaryImage,
@@ -127,7 +131,14 @@ export class StockFormComponent implements OnInit {
     };
 
     this.stockManagementService.addStock(stockData, images).subscribe((saveRes: any) => {
-      console.log('SAVE RESULT: ', saveRes);
+      if (saveRes && saveRes.error) {
+        this.toastr.error(`${saveRes.message}`, 'Failed', { positionClass: 'toast-center-center' });
+        this.isLoading = false;
+      } else {
+        this.toastr.info('Stock Added', 'Success', { positionClass: 'toast-center-center' });
+        this.closeDialog();
+        this.isLoading = false;
+      }
     });
   }
 

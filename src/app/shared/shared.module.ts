@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 
 
@@ -10,11 +11,13 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [
     CommonModule,
     MatDialogModule,
+    MatProgressSpinnerModule
   ],
   // entryComponents: [NavBarComponent]
   exports: [
     MatDialogModule,
-    NavBarComponent
+    NavBarComponent,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

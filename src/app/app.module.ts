@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +20,11 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      enableHtml: true,
+    }),
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

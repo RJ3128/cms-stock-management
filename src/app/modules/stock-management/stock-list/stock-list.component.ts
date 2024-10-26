@@ -10,7 +10,7 @@ import { StockFormComponent } from '../stock-form/stock-form.component';
 export class StockListComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {

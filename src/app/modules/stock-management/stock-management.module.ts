@@ -6,8 +6,6 @@ import { StockManagementRoutingModule } from './stock-management.routing.module'
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 @NgModule({
   declarations: [StockListComponent, StockFormComponent],
   imports: [
