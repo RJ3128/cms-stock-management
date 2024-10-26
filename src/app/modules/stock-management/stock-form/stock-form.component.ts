@@ -1,6 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { StockManagementService } from '../stock-management.service';
 
 @Component({
   selector: 'app-stock-form',
@@ -8,22 +10,36 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
   styleUrls: ['./stock-form.component.css']
 })
 export class StockFormComponent implements OnInit {
+
+  @ViewChild('myFileInput', { static: false }) myFileInput: ElementRef;
+
+  public stockForm: FormGroup;
   public title = '';
   public imageChangedEvent: any = '';
-  public cropping: boolean = false;
   public primaryImage: any = '';
-  public frontImage: any = '';
-  public sideImage: any = '';
-  public backImage: any = '';
+  public frontImage: any = undefined;
+  public sideImage: any = undefined;
+  public backImage: any = undefined;
+  public selectedImageType = 'primary';
+  public imageTypes = [
+    { label: "Primary", value: "primary" },
+    { label: "Front", value: "front" },
+    { label: "Side", value: "side" },
+    { label: "Back", value: "back" }
+  ];
+  public buttonLabel = 'Save';
 
 
   constructor(
     private dialogRef: MatDialogRef<StockFormComponent>,
+    private formBuilder: FormBuilder,
+    private stockManagementService: StockManagementService,
     @Inject(MAT_DIALOG_DATA) public formData: any
   ) { }
 
   ngOnInit() {
     this.setTitle();
+    this.groupStockForm();
   }
 
   setTitle() {
@@ -31,35 +47,88 @@ export class StockFormComponent implements OnInit {
       this.title = 'New Stock';
     } else {
       this.title = 'Edit Stock';
+      this.buttonLabel = "Update";
     }
   }
+
+  groupStockForm() {
+
+    if (this.formData.newEntry) {
+
+      this.stockForm = this.formBuilder.group({
+        regNo: ['', Validators.required],
+        make: ['', Validators.required],
+        model: ['', Validators.required],
+        modelYear: ['', Validators.required],
+        kms: [0, Validators.required],
+        colour: [''],
+        vin: ['', Validators.required],
+        retailPrice: [0],
+        costPrice: [0],
+        accessories: [''],
+      });
+
+    } else {
+
+      this.stockForm = this.formBuilder.group({
+        regNo: [(this.formData.regNo) ? this.formData.regNo : '', Validators.required],
+        make: [(this.formData.make) ? this.formData.make : '', Validators.required],
+        model: [(this.formData.model) ? this.formData.model : '', Validators.required],
+        modelYear: [(this.formData.modelYear) ? this.formData.modelYear : '', Validators.required],
+        kms: [(this.formData.kms) ? this.formData.kms : 0, Validators.required],
+        colour: [(this.formData.colour) ? this.formData.colour : ''],
+        vin: [(this.formData.vin) ? this.formData.vin : '', Validators.required],
+        retailPrice: [(this.formData.retailPrice) ? this.formData.retailPrice : 0],
+        costPrice: [(this.formData.costPrice) ? this.formData.costPrice : 0],
+        accessories: [(this.formData.accessories) ? this.formData.accessories : ''],
+      });
+    }
+  }
+
+  //!! Image Upload Functions
 
   onFileChange(event: any): void {
     this.imageChangedEvent = event;
   }
 
   imageCropped(event: ImageCroppedEvent) {
-    this.primaryImage = event.base64;
-  }
+    switch (this.selectedImageType) {
+      case 'primary':
+        this.primaryImage = event.base64;
+        break;
 
-  cropperReady() {
-    console.log('This is where you add the ready button');
-    this.cropping = true;
-  }
-  loadImageFailed() {
-    // show message
-  }
+      case 'front':
+        this.frontImage = event.base64;
+        break;
 
+      case 'side':
+        this.sideImage = event.base64;
+        break;
+
+      case 'back':
+        this.backImage = event.base64;
+        break;
+    }
+
+    this.myFileInput.nativeElement.value = '';
+  }
 
   cropImage() {
-    if (this.primaryImage) {
-      console.log('Cropped Image:', this.primaryImage);
-      // You can now use the cropped image (e.g., send it to a server, display it, etc.)
-    } else {
-      console.log('No image has been cropped yet.');
-    }
     this.imageChangedEvent = undefined;
-    this.cropping = false;
+  }
+
+  onSubmit() {
+    const stockData = this.stockForm.getRawValue();
+    const images = {
+      primaryImage: this.primaryImage,
+      frontImage: this.frontImage,
+      sideImage: this.sideImage,
+      backImage: this.backImage
+    };
+
+    this.stockManagementService.addStock(stockData, images).subscribe((saveRes: any) => {
+      console.log('SAVE RESULT: ', saveRes);
+    });
   }
 
   closeDialog() {

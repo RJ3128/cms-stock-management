@@ -81,14 +81,15 @@ body {
     justify-content: space-between;
     height: 3rem;
     width: 100%;
-    background: linear-gradient(90deg, rgb(163, 163, 163) 0%, rgb(115, 115, 115) 100%);
+    background: linear-gradient(90deg, #00006a 0%, #0101b6 100%);
     border: #00006a 1px solid;
     font-size: larger;
     font-weight: bold;
+    color: white;
 }
 
 .form-close-button {
-    background-color: #0101b6;
+    background-color: #b30000;
     color: white;
     border: black 1px solid;
     padding: 0.5rem 1rem;
@@ -97,7 +98,7 @@ body {
 }
 
 .form-close-button:hover {
-    background-color: #0101db !important;
+    background-color: #c20000;
 }
 
 .mat-dialog-container {
