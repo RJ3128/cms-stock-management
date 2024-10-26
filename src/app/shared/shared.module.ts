@@ -2,22 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatProgressSpinnerModule } from '@angular/material';
-
+import { AgGridModule } from 'ag-grid-angular';
+import { ThumbnailRendererComponent } from './thumbnail-renderer/thumbnail-renderer.component';
 
 
 @NgModule({
-  declarations: [NavBarComponent],
+  declarations: [NavBarComponent, ThumbnailRendererComponent],
   imports: [
     CommonModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    AgGridModule.withComponents([])
   ],
-  // entryComponents: [NavBarComponent]
   exports: [
     MatDialogModule,
     NavBarComponent,
-    MatProgressSpinnerModule
+    ThumbnailRendererComponent,
+    AgGridModule
+  ],
+  entryComponents: [
+    ThumbnailRendererComponent
   ]
 })
 export class SharedModule { }

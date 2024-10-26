@@ -9,9 +9,10 @@
                 <button type="submit" class="btn heading-button" (click)="addStock()">Add Stock</button>
             </div>
         </div>
-        <div>
-            Stock List
-            <button (click)="showSuccess()">Show Success</button>
+        <div class="grid-container">
+            <ag-grid-angular class="ag-theme-alpine grid-styles" [rowData]="rowData" [columnDefs]="columnDefs"
+                (gridReady)="onGridReady($event)" [gridOptions]="gridOptions">
+            </ag-grid-angular>
         </div>
     </div>
 </div>

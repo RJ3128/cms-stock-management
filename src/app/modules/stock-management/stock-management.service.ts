@@ -30,4 +30,14 @@ export class StockManagementService {
 
         return this.http.post(`${this.apiUrl}/stock-management/create-stock-item`, payload, { headers });
     }
+
+    getStock() {
+        const token = localStorage.getItem('token'); // example, adjust as needed
+
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+        });
+
+        return this.http.get(`${this.apiUrl}/stock-management/get-all-stock`, { headers });
+    }
 }
