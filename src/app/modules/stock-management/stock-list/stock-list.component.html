@@ -2,7 +2,16 @@
     <div class="nav-bar-container">
         <app-nav-bar></app-nav-bar>
     </div>
-    <div class="stock-list">
-        STOCK LIST
+    <div class="heading-bar-container">
+        <div class="heading-bar">
+            <div class="nav-bar-heading">Stock List</div>
+            <div class="heading-button-container">
+                <button type="submit" class="btn heading-button" (click)="addStock()">Add Stock</button>
+            </div>
+        </div>
+        <div>
+            Stock List
+            <button (click)="showSuccess()">Show Success</button>
+        </div>
     </div>
 </div>

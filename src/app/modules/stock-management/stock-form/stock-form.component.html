@@ -1,1 +1,153 @@
-<p>stock-form works!</p>
+<div class="form-container">
+    <!-- Form Heading -->
+    <div class="form-heading center-content">
+        <span></span>
+        <span>{{title}}</span>
+        <button class="form-close-button" (click)="closeDialog()"><i class="fas fa-xmark"></i></button>
+    </div>
+
+    <!-- Form Content: start -->
+    <div class="form-input-container">
+        <form [formGroup]="stockForm">
+            <div class="form-heading-label center-content">
+                <h2>Vehicle Information</h2>
+            </div>
+
+            <div class="form-input-row">
+                <div class="form-input-field center-content">
+                    <label class="form-label">Registration No: *</label>
+                    <input class="form-input" formControlName="regNo" />
+                </div>
+
+                <div class="form-input-field center-content">
+                    <label class="form-label">Make: *</label>
+                    <input class="form-input" formControlName="make" />
+                </div>
+
+                <div class="form-input-field center-content">
+                    <label class="form-label">Model: *</label>
+                    <input class="form-input" formControlName="model" />
+                </div>
+            </div>
+
+            <div class="form-input-row ">
+                <div class="form-input-field center-content">
+                    <label class="form-label">Model Year: *</label>
+                    <input class="form-input" type="number" formControlName="modelYear" />
+                </div>
+
+
+                <div class="form-input-field center-content">
+                    <label class="form-label">KMS: *</label>
+                    <input class="form-input" type="number" formControlName="kms" />
+                </div>
+
+
+                <div class="form-input-field center-content">
+                    <label class="form-label">Colour:</label>
+                    <input class="form-input" formControlName="colour" />
+                </div>
+            </div>
+
+            <div class="form-input-row ">
+
+                <div class="form-input-field center-content">
+                    <label class="form-label">VIN: *</label>
+                    <input class="form-input" formControlName="vin" />
+                </div>
+
+                <div class="form-input-field center-content">
+                    <label class="form-label">Retail Price:</label>
+                    <input class="form-input" type="number" formControlName="retailPrice" />
+                </div>
+
+                <div class="form-input-field center-content">
+                    <label class="form-label">Cost Price:</label>
+                    <input class="form-input" type="number" formControlName="costPrice" />
+                </div>
+            </div>
+
+            <div class="form-input-row accessory-padding">
+                <label class="accessory-label">Accessories:</label>
+                <textarea class="accessory-input" type="text" matInput formControlName="accessories" rows="3"
+                    placeholder="e.g. GPS, Leather seats, Sunroof"></textarea>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Form Content: end -->
+
+
+    <!-- IMAGE UPLOAD: start -->
+    <hr />
+
+    <div class="form-heading-label center-content">
+        <h2>Images</h2>
+    </div>
+
+    <div class="image-upload-section center-content">
+        <div class="set-row">
+            <div class="selector-container center-content">
+                <label class="selector-label" for="image-type-select">Which image do you want to upload:</label>
+                <select class="selector-dropdown" id="image-type-select" [(ngModel)]="selectedImageType">
+                    <option *ngFor="let type of imageTypes" [value]="type.value">{{ type.label }}</option>
+                </select>
+            </div>
+
+            <button class="image-upload-button">
+                Upload Image
+                <input #myFileInput class="image-upload-input" type="file" (change)="onFileChange($event)"
+                    accept="image/*" />
+            </button>
+        </div>
+        <div *ngIf="imageChangedEvent" class="overlay">
+            <div class="overlay-content">
+                <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" format="jpeg"
+                    output="base64" imageQuality="50" (imageCropped)="imageCropped($event)">
+                </image-cropper>
+
+                <button (click)="cropImage()">Use Image</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="image-previews center-content">
+        <div class="cropped-image-container">
+            <label>Primary Image</label>
+            <img *ngIf="primaryImage" class="cropped-image" [src]="primaryImage" />
+            <img *ngIf="!primaryImage" class="cropped-image" src="assets/images/Image_not_available.png" alt="image">
+        </div>
+
+        <div class="cropped-image-container">
+            <label>Front Image</label>
+            <img *ngIf="frontImage" class="cropped-image" [src]="frontImage" />
+            <img *ngIf="!frontImage" class="cropped-image" src="assets/images/Image_not_available.png" alt="image">
+        </div>
+
+        <div class="cropped-image-container">
+            <label>Side Image</label>
+            <img *ngIf="sideImage" class="cropped-image" [src]="sideImage" />
+            <img *ngIf="!sideImage" class="cropped-image" src="assets/images/Image_not_available.png" alt="image">
+        </div>
+
+        <div class="cropped-image-container">
+            <label>Back Image</label>
+            <img *ngIf="backImage" class="cropped-image" [src]="backImage" />
+            <img *ngIf="!backImage" class="cropped-image" src="assets/images/Image_not_available.png" alt="image">
+        </div>
+    </div>
+    <!-- IMAGE UPLOAD : end -->
+
+    <!-- Buttons: start -->
+
+    <div class="button-container">
+        <button class="btn btn-primary submit-buttons" (click)="onSubmit()"
+            [disabled]="!stockForm.valid || isLoading">{{buttonLabel}}</button>
+        <button class="btn btn-warning submit-buttons" (click)="closeDialog()">Cancel</button>
+    </div>
+
+    <!-- Buttons: end -->
+</div>

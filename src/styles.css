@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/ngx-toastr/toastr.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 html,
 body {
@@ -18,7 +20,6 @@ body {
 .page-container {
     width: 100%;
     height: 100%;
-    background-color: rgb(163, 163, 163);
     display: flex;
     flex-direction: row;
 }
@@ -28,4 +29,84 @@ body {
     width: 20%;
     background: linear-gradient(90deg, #00006a 0%, #0101b6 100%);
     color: white;
+}
+
+.nav-bar-heading {
+    font-size: xx-large;
+    padding: 0.7rem;
+    font-weight: bolder;
+}
+
+.heading-bar-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading-bar {
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(163, 163, 163) 0%, rgb(115, 115, 115) 100%);
+    border: #00006a 1px solid;
+}
+
+.heading-button-container {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
+.heading-button {
+    margin-right: 2rem;
+    background-color: #0101b6 !important;
+    color: white !important;
+    border: black 1px solid !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 10px !important;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.heading-button:hover {
+    background-color: #0101db !important;
+}
+
+.form-container {
+    border: black 1px solid;
+    border-radius: 10px;
+}
+
+.form-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 3rem;
+    width: 100%;
+    background: linear-gradient(90deg, #00006a 0%, #0101b6 100%);
+    border: #00006a 1px solid;
+    font-size: larger;
+    font-weight: bold;
+    color: white;
+}
+
+.form-close-button {
+    background-color: #b30000;
+    color: white;
+    border: black 1px solid;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-close-button:hover {
+    background-color: #c20000;
+}
+
+.mat-dialog-container {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    border-radius: 10px !important;
 }
