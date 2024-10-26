@@ -14,10 +14,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ImageCropperModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
-    StockFormComponent
+    StockFormComponent,
   ]
 })
 export class StockManagementModule { }

@@ -1,0 +1,11 @@
+<ng-container *ngIf="image">
+    <div class="thumbnail-container">
+        <img [src]="image" class="thumbnail-image" />
+    </div>
+</ng-container>
+
+<ng-container *ngIf="!image">
+    <div class="thumbnail-container">
+        <img src="assets/images/Image_not_available.png" class="thumbnail-image" />
+    </div>
+</ng-container>

@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/ngx-toastr/toastr.css';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import "~ag-grid-community/dist/styles/ag-theme-material.css";
+
+
 
 html,
 body {
@@ -109,4 +115,15 @@ body {
     padding-right: 0px !important;
     padding-left: 0px !important;
     border-radius: 10px !important;
+}
+
+.grid-container {
+    height: 100%;
+    width: 100%;
+}
+
+.grid-styles {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
 }
