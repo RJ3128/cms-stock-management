@@ -5,6 +5,8 @@ import { StockManagementService } from '../stock-management.service';
 import { ThumbnailRendererComponent } from 'src/app/shared/thumbnail-renderer/thumbnail-renderer.component';
 import { AgDeleteButtonComponent } from 'src/app/shared/ag-delete-button/ag-delete-button.component';
 import { AgEditButtonComponent } from 'src/app/shared/ag-edit-button/ag-edit-button.component';
+import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-stock-list',
@@ -23,6 +25,7 @@ export class StockListComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private stockManagementService: StockManagementService,
+    private toastr: ToastrService,
   ) {
 
     this.gridOptions = {
@@ -114,21 +117,13 @@ export class StockListComponent implements OnInit {
     this.editStockItem(stockItem);
   }
 
-  onDelete(id) {
-    // const stockFormRef = this.dialog.open(StockFormComponent, {
-    //   width: '80%',
-    //   data: stockItem,
-    //   disableClose: true,
-    // });
-    // stockFormRef.afterClosed().subscribe(() => {
-    //   this.getStockData();
-    // });
+  onDelete(stockItem) {
+    this.deleteStockItem(stockItem);
   }
 
 
   getStockData() {
     this.stockManagementService.getStock().subscribe((stockData: any) => {
-      console.log('RESPONSE: ', stockData);
       this.rowData = stockData;
     });
   }
@@ -154,6 +149,26 @@ export class StockListComponent implements OnInit {
     });
     stockFormRef.afterClosed().subscribe(() => {
       this.getStockData();
+    });
+  }
+
+  deleteStockItem(stockItem) {
+
+    const confirmDialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: `Delete: ${stockItem.regNo}`,
+        message: 'Sure you want to delete this stock item?'
+      },
+      width: '40%',
+      disableClose: true,
+    });
+    confirmDialogRef.afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        this.stockManagementService.deleteStock(stockItem._id).subscribe((result: any) => {
+          this.toastr.info('Stock Deleted', 'Success', { positionClass: 'toast-center-center' });
+          this.getStockData();
+        });
+      }
     });
   }
 

@@ -6,6 +6,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { ThumbnailRendererComponent } from './thumbnail-renderer/thumbnail-renderer.component';
 import { AgDeleteButtonComponent } from './ag-delete-button/ag-delete-button.component';
 import { AgEditButtonComponent } from './ag-edit-button/ag-edit-button.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { AgEditButtonComponent } from './ag-edit-button/ag-edit-button.component
     NavBarComponent,
     ThumbnailRendererComponent,
     AgDeleteButtonComponent,
-    AgEditButtonComponent
+    AgEditButtonComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -24,12 +26,13 @@ import { AgEditButtonComponent } from './ag-edit-button/ag-edit-button.component
     MatDialogModule,
     NavBarComponent,
     ThumbnailRendererComponent,
-    AgGridModule
+    AgGridModule,
   ],
   entryComponents: [
     ThumbnailRendererComponent,
     AgDeleteButtonComponent,
-    AgEditButtonComponent
+    AgEditButtonComponent,
+    ConfirmDialogComponent
   ]
 })
 export class SharedModule { }

@@ -19,8 +19,8 @@ export class AgDeleteButtonComponent implements ICellRendererAngularComp {
   }
 
   onDelete() {
-    const id = this.params.data._id;
-    this.params.context.componentParent.onDelete(id);
+    const stockItem = this.params.data;
+    this.params.context.componentParent.onDelete(stockItem);
   }
 
 }

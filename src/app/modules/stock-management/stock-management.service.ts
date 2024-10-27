@@ -63,7 +63,6 @@ export class StockManagementService {
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
         });
-
         return this.http.delete(`${this.apiUrl}/stock-management/delete-stock-item/${stockId}`, { headers });
     }
 

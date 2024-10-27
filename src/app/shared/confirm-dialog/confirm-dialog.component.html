@@ -1,0 +1,19 @@
+<div class="form-container">
+    <!-- Form Heading -->
+    <div class="form-heading center-content">
+        <span></span>
+        <span>{{title}}</span>
+        <button class="form-close-button" (click)="closeDialog()"><i class="fas fa-xmark"></i></button>
+    </div>
+
+    <div class="message center-content">
+        {{message}}
+    </div>
+
+    <div class="button-container">
+        <button class="btn btn-primary submit-buttons update-button" (click)="closeDialog(true)">
+            <i class="fa-solid fa-check"></i> Yes</button>
+        <button class="btn btn-warning submit-buttons" (click)="closeDialog()">
+            <i class="fa-solid fa-xmark"></i> Cancel</button>
+    </div>
+</div>

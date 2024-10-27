@@ -173,3 +173,10 @@ body {
 .update-button {
     background: linear-gradient(90deg, #00006a 0%, #0101b6 100%);
 }
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem
+}
