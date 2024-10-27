@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'https://178.128.198.86:3000'
+  apiURL: 'https://leaf-sheep.co.za/api'
 };
