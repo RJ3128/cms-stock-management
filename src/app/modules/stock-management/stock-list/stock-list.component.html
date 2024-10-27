@@ -10,8 +10,13 @@
             </div>
         </div>
         <div class="grid-container">
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="search-input" type="text" (input)="onQuickFilterChanged($event)" placeholder="Search...">
+            </div>
             <ag-grid-angular class="ag-theme-alpine grid-styles" [rowData]="rowData" [columnDefs]="columnDefs"
-                (gridReady)="onGridReady($event)" [gridOptions]="gridOptions">
+                (gridReady)="onGridReady($event)" [gridOptions]="gridOptions" [pagination]="true"
+                [paginationPageSize]="paginationSize">
             </ag-grid-angular>
         </div>
     </div>

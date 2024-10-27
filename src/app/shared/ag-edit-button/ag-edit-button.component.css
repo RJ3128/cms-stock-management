@@ -1,0 +1,9 @@
+.edit-button {
+    background-color: #0158b5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-top: 15px;
+    padding-inline: 10px;
+}
