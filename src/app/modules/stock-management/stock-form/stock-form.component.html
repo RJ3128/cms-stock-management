@@ -16,30 +16,61 @@
             <div class="form-input-row">
                 <div class="form-input-field center-content">
                     <label class="form-label">Registration No: *</label>
-                    <input class="form-input" formControlName="regNo" />
+                    <div>
+                        <input class="form-input" formControlName="regNo" />
+                        <div *ngIf="stockForm.get('regNo')?.invalid && (stockForm.get('regNo')?.touched)"
+                            class="error-message">
+                            <span>Reg No must be entered</span>
+                        </div>
+                    </div>
                 </div>
+
 
                 <div class="form-input-field center-content">
                     <label class="form-label">Make: *</label>
-                    <input class="form-input" formControlName="make" />
+                    <div>
+                        <input class="form-input" formControlName="make" />
+                        <div *ngIf="stockForm.get('make')?.invalid && (stockForm.get('make')?.touched)"
+                            class="error-message">
+                            <span>Make must be entered</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-input-field center-content">
                     <label class="form-label">Model: *</label>
-                    <input class="form-input" formControlName="model" />
+                    <div>
+                        <input class="form-input" formControlName="model" />
+                        <div *ngIf="stockForm.get('model')?.invalid && (stockForm.get('model')?.touched)"
+                            class="error-message">
+                            <span>Model must be entered</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-input-row ">
                 <div class="form-input-field center-content">
                     <label class="form-label">Model Year: *</label>
-                    <input class="form-input" type="number" formControlName="modelYear" />
+                    <div>
+                        <input class="form-input" type="number" formControlName="modelYear" />
+                        <div *ngIf="stockForm.get('modelYear')?.invalid && (stockForm.get('modelYear')?.touched)"
+                            class="error-message">
+                            <span>Model Year must be entered</span>
+                        </div>
+                    </div>
                 </div>
 
 
                 <div class="form-input-field center-content">
                     <label class="form-label">KMS: *</label>
-                    <input class="form-input" type="number" formControlName="kms" />
+                    <div>
+                        <input class="form-input" type="number" formControlName="kms" />
+                        <div *ngIf="stockForm.get('kms')?.invalid && (stockForm.get('kms')?.touched)"
+                            class="error-message">
+                            <span>KMS must be entered</span>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -53,7 +84,13 @@
 
                 <div class="form-input-field center-content">
                     <label class="form-label">VIN: *</label>
-                    <input class="form-input" formControlName="vin" />
+                    <div>
+                        <input class="form-input" formControlName="vin" />
+                        <div *ngIf="stockForm.get('vin')?.invalid && (stockForm.get('vin')?.touched)"
+                            class="error-message">
+                            <span>VIN must be entered</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-input-field center-content">

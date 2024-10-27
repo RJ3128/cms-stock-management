@@ -152,7 +152,8 @@ image-cropper {
     height: 3rem;
 }
 
-.warning-message {
+.error-message {
+    font-size: small;
     color: red;
-    margin-top: -1rem;
+    text-align: center;
 }

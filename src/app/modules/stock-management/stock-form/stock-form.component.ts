@@ -59,7 +59,6 @@ export class StockFormComponent implements OnInit {
   }
 
   groupStockForm() {
-    console.log('FORM DATA: ', this.formData);
     if (this.formData.newEntry) {
 
       this.stockForm = this.formBuilder.group({

@@ -1,0 +1,35 @@
+.form-input-container {
+    padding: 1rem;
+}
+
+.form-heading-label {
+    color: #0101b6
+}
+
+.form-input-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.form-input-field {
+    display: flex;
+    flex: auto;
+    width: fit-content;
+    padding: 1rem;
+}
+
+.form-label {
+    width: 10rem;
+}
+
+.form-input {
+    width: 10rem;
+    height: 2rem
+}
+
+.error-message {
+    font-size: small;
+    color: red;
+    text-align: center;
+}

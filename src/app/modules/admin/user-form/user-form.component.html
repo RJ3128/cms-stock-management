@@ -1,0 +1,60 @@
+<div class="form-container">
+    <!-- Form Heading -->
+    <div class="form-heading center-content">
+        <span></span>
+        <span>{{title}}</span>
+        <button class="form-close-button" (click)="closeDialog()"><i class="fas fa-xmark"></i></button>
+    </div>
+
+    <!-- Form Content: start -->
+    <div class="form-input-container">
+        <form [formGroup]="userForm">
+            <div class="form-heading-label center-content">
+                <h2>User Information</h2>
+            </div>
+
+            <div>
+                <div class="form-input-field center-content">
+                    <label class="form-label">Username: *</label>
+                    <input class="form-input" formControlName="username" />
+                </div>
+                <div *ngIf="userForm.get('username')?.invalid && (userForm.get('username')?.touched)"
+                    class="error-message">
+                    <span>Username must be entered</span>
+                </div>
+
+                <div class="form-input-field center-content">
+                    <label class="form-label">Email: *</label>
+                    <input class="form-input" formControlName="email" />
+                </div>
+                <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.touched)" class="error-message">
+                    <span>Email must be entered</span>
+                </div>
+
+                <div class="form-input-field center-content">
+                    <label class="form-label">Password: *</label>
+                    <input type="password" class="form-input" formControlName="password" />
+                </div>
+                <div *ngIf="userForm.get('password')?.invalid && (userForm.get('password')?.touched)"
+                    class="error-message">
+                    <span>Password must be entered</span>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Form Content: end -->
+
+
+    <!-- Buttons: start -->
+
+    <div class="button-container">
+        <button class="btn btn-primary submit-buttons update-button" (click)="onSubmit()"
+            [disabled]="!userForm.valid">Create User</button>
+        <button class="btn btn-warning submit-buttons" (click)="closeDialog()">Cancel</button>
+    </div>
+
+    <!-- Buttons: end -->
+</div>
