@@ -17,7 +17,7 @@ export class StockFormComponent implements OnInit {
   public stockForm: FormGroup;
   public title = '';
   public imageChangedEvent: any = '';
-  public primaryImage: any = '';
+  public primaryImage: any = undefined;
   public frontImage: any = undefined;
   public sideImage: any = undefined;
   public backImage: any = undefined;
@@ -29,7 +29,7 @@ export class StockFormComponent implements OnInit {
     { label: "Back", value: "back" }
   ];
   public buttonLabel = 'Save';
-  public isLoading: boolean = false;
+  public isLoading = false;
 
 
   constructor(
@@ -49,13 +49,17 @@ export class StockFormComponent implements OnInit {
     if (this.formData.newEntry) {
       this.title = 'New Stock';
     } else {
-      this.title = 'Edit Stock';
+      this.title = 'Edit Stock: ';
+      if (this.formData.model) this.title += ` ${this.formData.model}`;
+      if (this.formData.regNo) this.title += ` ${this.formData.regNo}`;
+      if (this.formData.vin) this.title += ` ${this.formData.vin}`;
+
       this.buttonLabel = "Update";
     }
   }
 
   groupStockForm() {
-
+    console.log('FORM DATA: ', this.formData);
     if (this.formData.newEntry) {
 
       this.stockForm = this.formBuilder.group({
@@ -83,8 +87,13 @@ export class StockFormComponent implements OnInit {
         vin: [(this.formData.vin) ? this.formData.vin : '', Validators.required],
         retailPrice: [(this.formData.retailPrice) ? this.formData.retailPrice : 0],
         costPrice: [(this.formData.costPrice) ? this.formData.costPrice : 0],
-        accessories: [(this.formData.accessories) ? this.formData.accessories : ''],
+        accessories: [(this.formData.accessories.accessories) ? this.formData.accessories.accessories : ''],
       });
+
+      this.primaryImage = this.formData.stockImages.primaryImage;
+      this.frontImage = this.formData.stockImages.frontImage;
+      this.sideImage = this.formData.stockImages.sideImage;
+      this.backImage = this.formData.stockImages.backImage;
     }
   }
 
@@ -130,16 +139,30 @@ export class StockFormComponent implements OnInit {
       backImage: this.backImage
     };
 
-    this.stockManagementService.addStock(stockData, images).subscribe((saveRes: any) => {
-      if (saveRes && saveRes.error) {
-        this.toastr.error(`${saveRes.message}`, 'Failed', { positionClass: 'toast-center-center' });
-        this.isLoading = false;
-      } else {
-        this.toastr.info('Stock Added', 'Success', { positionClass: 'toast-center-center' });
-        this.closeDialog();
-        this.isLoading = false;
-      }
-    });
+    if (this.formData.newEntry) {
+
+      this.stockManagementService.addStock(stockData, images).subscribe((saveRes: any) => {
+        if (saveRes && saveRes.error) {
+          this.toastr.error(`${saveRes.message}`, 'Failed', { positionClass: 'toast-center-center' });
+          this.isLoading = false;
+        } else {
+          this.toastr.info('Stock Added', 'Success', { positionClass: 'toast-center-center' });
+          this.closeDialog();
+          this.isLoading = false;
+        }
+      });
+    } else {
+      this.stockManagementService.updateStock(stockData, images, this.formData._id).subscribe((saveRes: any) => {
+        if (saveRes && saveRes.error) {
+          this.toastr.error(`${saveRes.message}`, 'Failed', { positionClass: 'toast-center-center' });
+          this.isLoading = false;
+        } else {
+          this.toastr.info('Stock Updated', 'Success', { positionClass: 'toast-center-center' });
+          this.closeDialog();
+          this.isLoading = false;
+        }
+      });
+    }
   }
 
   closeDialog() {

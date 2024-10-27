@@ -4,10 +4,17 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AgGridModule } from 'ag-grid-angular';
 import { ThumbnailRendererComponent } from './thumbnail-renderer/thumbnail-renderer.component';
+import { AgDeleteButtonComponent } from './ag-delete-button/ag-delete-button.component';
+import { AgEditButtonComponent } from './ag-edit-button/ag-edit-button.component';
 
 
 @NgModule({
-  declarations: [NavBarComponent, ThumbnailRendererComponent],
+  declarations: [
+    NavBarComponent,
+    ThumbnailRendererComponent,
+    AgDeleteButtonComponent,
+    AgEditButtonComponent
+  ],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -20,7 +27,9 @@ import { ThumbnailRendererComponent } from './thumbnail-renderer/thumbnail-rende
     AgGridModule
   ],
   entryComponents: [
-    ThumbnailRendererComponent
+    ThumbnailRendererComponent,
+    AgDeleteButtonComponent,
+    AgEditButtonComponent
   ]
 })
 export class SharedModule { }

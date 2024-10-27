@@ -144,7 +144,7 @@
     <!-- Buttons: start -->
 
     <div class="button-container">
-        <button class="btn btn-primary submit-buttons" (click)="onSubmit()"
+        <button class="btn btn-primary submit-buttons update-button" (click)="onSubmit()"
             [disabled]="!stockForm.valid || isLoading">{{buttonLabel}}</button>
         <button class="btn btn-warning submit-buttons" (click)="closeDialog()">Cancel</button>
     </div>
