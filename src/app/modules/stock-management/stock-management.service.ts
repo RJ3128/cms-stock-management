@@ -17,7 +17,7 @@ export class StockManagementService {
     ) { }
 
     getStock() {
-        const token = localStorage.getItem('token'); // example, adjust as needed
+        const token = localStorage.getItem('token');
 
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
@@ -32,7 +32,7 @@ export class StockManagementService {
             stockImages: images
         };
 
-        const token = localStorage.getItem('token'); // example, adjust as needed
+        const token = localStorage.getItem('token');
 
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
@@ -47,7 +47,7 @@ export class StockManagementService {
             stockImages: images
         };
 
-        const token = localStorage.getItem('token'); // example, adjust as needed
+        const token = localStorage.getItem('token');
 
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
@@ -58,7 +58,7 @@ export class StockManagementService {
 
     deleteStock(stockId) {
 
-        const token = localStorage.getItem('token'); // example, adjust as needed
+        const token = localStorage.getItem('token');
 
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`

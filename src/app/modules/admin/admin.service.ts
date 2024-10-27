@@ -15,7 +15,7 @@ export class AdminService {
     ) { }
 
     getUsers() {
-        const token = localStorage.getItem('token'); // example, adjust as needed
+        const token = localStorage.getItem('token');
 
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
@@ -25,7 +25,7 @@ export class AdminService {
     }
 
     createUser(user) {
-        const token = localStorage.getItem('token'); // example, adjust as needed
+        const token = localStorage.getItem('token');
 
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
@@ -36,7 +36,7 @@ export class AdminService {
 
 
     deleteUser(userId) {
-        const token = localStorage.getItem('token'); // example, adjust as needed
+        const token = localStorage.getItem('token');
 
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
