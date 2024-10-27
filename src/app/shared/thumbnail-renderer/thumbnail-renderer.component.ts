@@ -20,8 +20,6 @@ export class ThumbnailRendererComponent implements ICellEditorAngularComp {
     this.image = params.data.stockImages.primaryImage;
   }
 
-  // src="assets/images/Image_not_available.png"
-
   refresh(): boolean {
     return false;
   }
