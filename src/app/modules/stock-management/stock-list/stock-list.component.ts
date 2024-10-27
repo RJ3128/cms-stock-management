@@ -115,8 +115,16 @@ export class StockListComponent implements OnInit {
   }
 
   onDelete(id) {
-    console.log('DELETE: ', id);
+    // const stockFormRef = this.dialog.open(StockFormComponent, {
+    //   width: '80%',
+    //   data: stockItem,
+    //   disableClose: true,
+    // });
+    // stockFormRef.afterClosed().subscribe(() => {
+    //   this.getStockData();
+    // });
   }
+
 
   getStockData() {
     this.stockManagementService.getStock().subscribe((stockData: any) => {
