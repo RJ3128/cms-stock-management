@@ -19,7 +19,7 @@ export class AgEditButtonComponent implements ICellRendererAngularComp {
     this.params = params;
   }
 
-  onDelete() {
+  onEdit() {
     const dataObj = this.params.data;
     this.params.context.componentParent.onEdit(dataObj);
   }
